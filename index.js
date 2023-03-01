@@ -44,63 +44,62 @@ const generateId = () => {
   return maxId;
 };
 
-app.get("/api/info", (_, response) => {
-  response.send(`<div>
-    <p>Phone book has info for ${persons.length} people </p>
-    <p>${new Date()}</p>
-    </div>`);
-});
+// app.get("/api/info", (_, response) => {
+//   response.send(`<div>
+//     <p>Phone book has info for ${persons.length} people </p>
+//     <p>${new Date()}</p>
+//     </div>`);
+// });
 app.get("/api/persons", (_, response) => {
   response.json(persons);
-  console.log('yes')
 });
 
-app.get("/api/persons/:id", (request, response) => {
-  const id = Number(request.params.id);
-  const person = persons.find((person) => person.id === id);
-  response.json(person);
-});
+// app.get("/api/persons/:id", (request, response) => {
+//   const id = Number(request.params.id);
+//   const person = persons.find((person) => person.id === id);
+//   response.json(person);
+// });
 
-app.delete("/api/persons/:id", (request, response) => {
-  const id = Number(request.params.id);
-  const person = persons.filter((person) => person.id !== id);
-  response.json(person);
-  response.status(204).end();
-});
+// app.delete("/api/persons/:id", (request, response) => {
+//   const id = Number(request.params.id);
+//   const person = persons.filter((person) => person.id !== id);
+//   response.json(person);
+//   response.status(204).end();
+// });
 
-app.post("/api/persons", (request, response) => {
-  const { name, number } = request.body;
-  const newPerson = {
-    id: generateId(),
-    name: name,
-    number: number,
-  };
+// app.post("/api/persons", (request, response) => {
+//   const { name, number } = request.body;
+//   const newPerson = {
+//     id: generateId(),
+//     name: name,
+//     number: number,
+//   };
 
-  if (!newPerson.name) {
-    return response.status(400).json({
-      error: "Please provide a name",
-    });
-  }
-  if (!newPerson.number) {
-    return response.status(400).json({
-      error: " please provide a number",
-    });
-  }
-  if (isNaN(newPerson.number)) {
-    return response.status(400).json({
-      error: "Invalid Number type",
-    });
-  }
-  const checkName = persons.find(
-    (person) => person.name.toLowerCase() === newPerson.name.toLowerCase()
-  );
-  if (checkName) {
-    return response.status(400).json({ error: "name must be unique" });
-  }
-  persons = persons.concat(newPerson);
-  response.json(persons);
-});
-console.log(process.env.PORT)
+//   if (!newPerson.name) {
+//     return response.status(400).json({
+//       error: "Please provide a name",
+//     });
+//   }
+//   if (!newPerson.number) {
+//     return response.status(400).json({
+//       error: " please provide a number",
+//     });
+//   }
+//   if (isNaN(newPerson.number)) {
+//     return response.status(400).json({
+//       error: "Invalid Number type",
+//     });
+//   }
+//   const checkName = persons.find(
+//     (person) => person.name.toLowerCase() === newPerson.name.toLowerCase()
+//   );
+//   if (checkName) {
+//     return response.status(400).json({ error: "name must be unique" });
+//   }
+//   persons = persons.concat(newPerson);
+//   response.json(persons);
+// });
+
 let PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
