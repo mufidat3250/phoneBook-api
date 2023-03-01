@@ -99,7 +99,7 @@ app.post("/api/persons", (request, response) => {
   persons = persons.concat(newPerson);
   response.json(persons);
 });
-// console.log(process.env.PORT)
+console.log(process.env.PORT)
 let PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
