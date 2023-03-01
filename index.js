@@ -52,6 +52,7 @@ app.get("/api/info", (_, response) => {
 });
 app.get("/api/persons", (_, response) => {
   response.json(persons);
+  console.log('yes')
 });
 
 app.get("/api/persons/:id", (request, response) => {
