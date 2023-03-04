@@ -4,7 +4,7 @@ GET http://localhost:10000/api/persons
 
 ###
 POST http://localhost:10000/api/persons
-Content-Type: application/json
+content-type: application/json
 
 {
     "name": "i love coding",
