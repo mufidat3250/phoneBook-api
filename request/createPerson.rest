@@ -1,7 +1,16 @@
-POST http://localhost:10000/api/persons
-content-type: application/json
+POST  http://localhost:10000/api/persons
+Content-Type: application/json
 
 {
-    "name": "i love coding",
-    "number": "234-678"
+    "name": "Mufidat Wahab",
+    "number": 1234
+}
+
+###
+PUT http://localhost:10000/api/persons/640f547a052c6008aa515cf9
+Content-Type: application/json
+
+{
+    "name": "Mufidat Wahab",
+    "number": 12345
 }
