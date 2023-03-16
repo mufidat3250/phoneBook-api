@@ -7,10 +7,10 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:10000/api/persons/640f547a052c6008aa515cf9
+PUT http://localhost:10000/api/persons/6411fcc4863d4afda951adda
 Content-Type: application/json
 
 {
-    "name": "Mufidat Wahab",
+    "name": "Mufidat W",
     "number": 12345
 }

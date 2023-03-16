@@ -12,10 +12,9 @@ const personSchema = new mongoose.Schema({
     name:String,
     number:Number
 })
-
 personSchema.set('toJSON', {
-    trasform:(document, returedObject)=>{
-        returedObject.id = returedObject.id.toString()
+    transform:(document, returedObject)=>{
+        returedObject.id = returedObject._id.toString()
         delete returedObject._id
         delete returedObject.__v
     }

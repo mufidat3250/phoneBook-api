@@ -20,11 +20,6 @@ app.use(
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGODB_URL);
 
-const generateId = () => {
-  maxId = Math.floor(Math.random() * 200);
-  return maxId;
-};
-
 app.get("/api/info", (_, response) => {
   Person.countDocuments({}).then((count)=> {
     let info = `<p>Phone book has info for ${count} people </p>`;
@@ -92,12 +87,12 @@ app.put("/api/persons/:id", (request, response, next) => {
     name: body.name,
     number: body.number,
   };
+  console.log({body})
   console.log(request.params.id);
   Person.findByIdAndUpdate(request.params.id, person, { new: true })
     .then((person) => response.json(person))
     .catch((error) => next(error));
 });
-
 
 const errorHandler = (error, request, response, next) => {
   console.log(error);
